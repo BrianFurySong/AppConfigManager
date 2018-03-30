@@ -1,0 +1,23 @@
+<form name="appConfigFrm" novalidate>
+    <table class="table table-striped" >
+        <thead >
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody style="border-radius: 8px 8px 8px 8px !important;">
+            <tr ng-repeat="appItem in $ctrl.appConfigItems">
+                <td><strong>{{appItem.configKey}}</strong></td>
+                <td>
+                    <span>
+                        <strong title="click to update the value" style="color:#1ab394; cursor:pointer" ng-click="$ctrl.showDiv(appItem)">Config Value: </strong>
+                        <strong ng-show="appItem.show">{{appItem.configValue}}</strong>
+                        <input type="text" required name="configValue" ng-hide="appItem.hide" ng-model="appItem.configValue" />
+                        <input title="Update the value" ng-disabled="appConfigFrm.$invalid" ng-hide="appItem.hide" class="btn-primary" type="submit" value="Submit" ng-click="$ctrl.editValue(appItem)" />
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
